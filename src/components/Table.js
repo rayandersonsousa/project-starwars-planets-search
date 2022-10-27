@@ -3,7 +3,10 @@ import getResults from '../services/getAPI';
 import myContext from '../context/MyContext';
 
 function Table() {
-  const { planetsList, setPlanets, filterPlanets } = useContext(myContext);
+  const { setPlanets, filterPlanets, filterList,
+    provideFilter, planetsList } = useContext(myContext);
+
+  const worlds = provideFilter(planetsList, filterPlanets, filterList);
 
   useEffect(() => {
     const resultsFunc = async () => {
@@ -35,24 +38,23 @@ function Table() {
 
       <tbody>
         {
-          planetsList.filter(({ name }) => name.includes(filterPlanets))
-            .map((planet, index) => (
-              <tr key={ index }>
-                <td>{planet.name}</td>
-                <td>{planet.rotation_period}</td>
-                <td>{planet.orbital_period}</td>
-                <td>{planet.diameter}</td>
-                <td>{planet.climate}</td>
-                <td>{planet.gravity}</td>
-                <td>{planet.terrain}</td>
-                <td>{planet.surface_water}</td>
-                <td>{planet.population}</td>
-                <td>{planet.films}</td>
-                <td>{planet.created}</td>
-                <td>{planet.edited}</td>
-                <td>{planet.url}</td>
-              </tr>
-            ))
+          worlds.map((planet, index) => (
+            <tr key={ index }>
+              <td>{planet.name}</td>
+              <td>{planet.rotation_period}</td>
+              <td>{planet.orbital_period}</td>
+              <td>{planet.diameter}</td>
+              <td>{planet.climate}</td>
+              <td>{planet.gravity}</td>
+              <td>{planet.terrain}</td>
+              <td>{planet.surface_water}</td>
+              <td>{planet.population}</td>
+              <td>{planet.films}</td>
+              <td>{planet.created}</td>
+              <td>{planet.edited}</td>
+              <td>{planet.url}</td>
+            </tr>
+          ))
         }
       </tbody>
     </table>

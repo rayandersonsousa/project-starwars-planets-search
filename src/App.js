@@ -1,11 +1,13 @@
 import React from 'react';
 import Table from './components/Table';
+import Filters from './components/Filters';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <span>Hello, App!</span>
+      <span>Star Wars Planets</span>
+      <Filters />
       <Table />
     </div>
   );
