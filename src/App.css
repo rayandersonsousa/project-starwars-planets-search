@@ -1,41 +1,167 @@
-.App {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #121418;
+  color: #4f546c;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  height: 100vh;
   text-align: center;
+  width: 95%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+img {
+  max-width: 30%;
 }
 
-@media ( prefers-reduced-motion : no-preference ) {
-
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+table {
+  background-color: yellow;
+  border-collapse: collapse;
+  box-shadow: 0 5px 10px #18191a;
+  margin-left: 3rem;
+  overflow: hidden;
+  text-align: left;
 }
 
-.App-header {
+thead {
+  box-shadow: 0 5px 10px #18191a;
+}
+
+th {
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.1rem;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 1rem 2rem;
+}
+
+tr:nth-child( even ) {
+  background-color: rgb(219, 219, 3);
+}
+
+.filter-container {
   align-items: center;
-  background-color: #282c34;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
+  display: grid;
   justify-content: center;
-  min-height: 100vh;
+  margin-bottom: 2.5rem;
+  margin-left: 15rem;
+  max-width: 65%;
 }
 
-.App-link {
-  color: #61dafb;
+.search-bar {
+  color: yellow;
 }
 
-@keyframes App-logo-spin {
+#name-filter {
+  background-color: #121418;
+  border: 2px solid yellow;
+  border-radius: 5px;
+  color: yellow;
+  font-size: 16px;
+  margin: 0.5rem 0;
+  padding: 10px 20px;
+  width: 100%;
+}
 
-  from {
-    transform: rotate(0deg);
-  }
+#button-remove-filters {
+  background-color: #121418;
+  border: 2px solid yellow;
+  border-radius: 5px;
+  color: yellow;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+}
 
-  to {
-    transform: rotate(360deg);
-  }
+#button-remove-filters:hover {
+  background-color: yellow;
+  color: #121418;
+  cursor: pointer;
+}
+
+#button-filter {
+  background-color: #121418;
+  border: 2px solid yellow;
+  border-radius: 5px;
+  color: yellow;
+  font-size: 16px;
+  margin: 0.5rem 0;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+}
+
+#button-filter:hover {
+  background-color: yellow;
+  color: #121418;
+  cursor: pointer;
+}
+
+.select-filters {
+  font-size: 16px;
+  margin: 0.5rem 0;
+  padding: 10px 20px;
+}
+
+.select-container {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.column-filter {
+  background-color: #121418;
+  border: 2px solid yellow;
+  border-radius: 5px;
+  color: yellow;
+}
+
+.comparison-filter {
+  background-color: #121418;
+  border: 2px solid yellow;
+  border-radius: 5px;
+  color: yellow;
+}
+
+.number-input {
+  background-color: #121418;
+  border: 2px solid yellow;
+  border-radius: 5px;
+  color: yellow;
+}
+
+.filter-div {
+  align-items: center;
+  color: yellow;
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+#delete-filter {
+  background-color: #121418;
+  border: 1.5px solid yellow;
+  border-radius: 3px;
+  color: yellow;
+  margin-left: 1rem;
+  padding: 0 1rem;
+}
+
+#delete-filter:hover {
+  background-color: yellow;
+  color: #121418;
+  cursor: pointer;
 }

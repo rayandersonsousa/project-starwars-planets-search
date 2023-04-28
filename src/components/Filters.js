@@ -1,14 +1,15 @@
 import React, { useContext, useEffect } from 'react';
 import myContext from '../context/MyContext';
+import '../App.css';
 
 function Filters() {
   const { getFilter, setInputFilter, inputFilter,
     setFilterList, filterList, planetsList, columnFilters,
     setColunmFilters, provideFilter, filterPlanets } = useContext(myContext);
 
-  useEffect(() => {
-    setFilterList(planetsList);
-  }, [planetsList, setFilterList]);
+  // useEffect(() => {
+  //   setFilterList(planetsList);
+  // }, [planetsList, setFilterList]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -28,7 +29,6 @@ function Filters() {
       inputFilter,
     ]));
     setColunmFilters(columns);
-    console.log('bora amigo, funcione mais de uma vez');
   };
 
   useEffect(() => {
@@ -40,21 +40,26 @@ function Filters() {
   }, [columnFilters, setInputFilter]);
 
   return (
-    <div>
-      <input
-        type="text"
-        data-testid="name-filter"
-        onChange={ getFilter }
-      />
-      <div>
+    <div className="filter-container">
+      <div className="search-bar">
+        <input
+          type="text"
+          data-testid="name-filter"
+          id="name-filter"
+          placeholder="Planeta"
+          onChange={ getFilter }
+        />
+      </div>
+      <div className="select-container">
         <select
           data-testid="column-filter"
           name="column"
+          className="select-filters column-filter"
           onChange={ handleChange }
         >
           {
-            columnFilters.map((filter) => (
-              <option key={ filter } value={ filter }>
+            columnFilters.map((filter, index) => (
+              <option key={ index } value={ filter }>
                 { filter }
               </option>
             ))
@@ -63,6 +68,7 @@ function Filters() {
         <select
           data-testid="comparison-filter"
           name="comparison"
+          className="select-filters comparison-filter"
           onChange={ handleChange }
         >
           <option value="maior que">maior que</option>
@@ -73,12 +79,14 @@ function Filters() {
           type="number"
           data-testid="value-filter"
           name="value"
+          className="select-filters number-input"
           value={ inputFilter.value }
           onChange={ handleChange }
         />
         <button
           type="button"
           data-testid="button-filter"
+          id="button-filter"
           onClick={ handleClick }
         >
           Filtrar
@@ -87,23 +95,25 @@ function Filters() {
       <br />
       {
         filterList.map((filter, index) => (
-          <div data-testid="filter" key={ index }>
+          <div className="filter-div" data-testid="filter" key={ index }>
             {filter.column}
             {' '}
             {filter.comparison}
             {' '}
             {filter.value}
             {' '}
-            {console.log(filterList)}
             <button
               type="button"
+              id="delete-filter"
               onClick={ () => {
                 setFilterList(filterList
                   .filter((selec) => selec.column !== filter.column));
                 setColunmFilters([...columnFilters, filter.column]);
               } }
             >
-              Excluir
+              <span className="material-symbols-outlined">
+                delete
+              </span>
             </button>
           </div>
         ))
@@ -111,13 +121,16 @@ function Filters() {
       <button
         type="button"
         data-testid="button-remove-filters"
+        id="button-remove-filters"
         onClick={ () => {
           setFilterList([]);
           setColunmFilters(['population', 'obital_period',
             'diameter', 'rotation_period', 'surface_water']);
         } }
       >
-        Remove
+        <span className="material-symbols-outlined">
+          delete
+        </span>
       </button>
     </div>
   );
